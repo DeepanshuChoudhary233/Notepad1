@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit Task - <%= filename %></title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+
+  <body class="min-h-screen bg-gradient-to-br from-gray-900 via-zinc-900 to-black text-white flex flex-col items-center py-10 px-4 font-sans">
+    
+    <!-- Back Button -->
+    <div class="w-full max-w-3xl mb-6">
+      <a
+        href="/"
+        class="inline-flex items-center gap-2 text-sm font-medium bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-400 hover:to-red-400 text-white px-4 py-2 rounded-lg shadow-md transition-all duration-300"
+      >
+        ← Go Back
+      </a>
+    </div>
+
+    <!-- Edit Task Card -->
+    <div class="w-full max-w-3xl bg-white/10 backdrop-blur-md border border-white/10 rounded-2xl p-8 shadow-lg">
+      <h1 class="text-3xl font-extrabold tracking-tight bg-gradient-to-r from-yellow-400 to-orange-300 bg-clip-text text-transparent drop-shadow-md mb-6">
+        Edit Task Name
+      </h1>
+
+      <!-- Edit Form -->
+      <form action="/edit" method="POST" class="flex flex-col gap-4 mb-8">
+        <input
+          type="text"
+          name="previous"
+          placeholder="Previous name"
+          value="<%= filename %>"
+          readonly
+          class="w-full md:w-2/3 px-5 py-3 rounded-lg bg-white/10 border border-white/10 text-gray-300 focus:outline-none focus:ring-2 focus:ring-yellow-400/40"
+        />
+
+        <input
+          type="text"
+          name="new"
+          placeholder="Enter new name"
+          class="w-full md:w-2/3 px-5 py-3 rounded-lg bg-white/10 border border-white/10 text-white focus:outline-none focus:ring-2 focus:ring-yellow-400/50 placeholder-gray-400"
+        />
+
+        <input
+          type="submit"
+          value="Update Name"
+          class="w-fit bg-gradient-to-r from-yellow-500 to-orange-400 hover:from-yellow-400 hover:to-orange-300 text-black font-semibold px-6 py-2 rounded-lg shadow-md hover:scale-[1.03] transition-all duration-300 cursor-pointer"
+        />
+      </form>
+
+      <!-- Delete Form -->
+      <form action="/delete" method="POST" class="flex justify-end">
+        <input type="hidden" name="filename" value="<%= filename %>" />
+        <button
+          type="submit"
+          class="bg-gradient-to-r from-red-600 to-pink-500 hover:from-red-500 hover:to-pink-400 text-white font-semibold px-6 py-2 rounded-lg shadow-md hover:scale-[1.03] transition-all duration-300"
+        >
+          🗑 Delete Task
+        </button>
+      </form>
+    </div>
+  </body>
+</html>
